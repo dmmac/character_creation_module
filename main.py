@@ -1,7 +1,9 @@
 from random import randint
+from graphic_arts.start_game_banner import run_screensaver
 
 
-def attack(char_name, char_class):
+def attack(char_name: str, char_class: str) -> str:
+    """Attack."""
     if char_class == 'warrior':
         return (f'{char_name} нанёс урон противнику равный '
                 f'{5 + randint(3, 5)}')
@@ -14,7 +16,8 @@ def attack(char_name, char_class):
     return ''
 
 
-def defence(char_name, char_class):
+def defence(char_name: str, char_class: str) -> str:
+    """Defence."""
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -24,7 +27,8 @@ def defence(char_name, char_class):
     return ''
 
 
-def special(char_name, char_class):
+def special(char_name: str, char_class: str) -> str:
+    """Special."""
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение '
                 '«Выносливость {80 + 25}»')
@@ -37,7 +41,8 @@ def special(char_name, char_class):
     return ''
 
 
-def start_training(char_name, char_class):
+def start_training(char_name:str , char_class: str) -> str:
+    """Start training."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -49,7 +54,7 @@ def start_training(char_name, char_class):
           'defence — чтобы блокировать атаку противника или special — '
           'чтобы использовать свою суперсилу.')
     print('Если не хочешь тренироваться, введи команду skip.')
-    cmd = None
+    cmd: str = None
     while cmd != 'skip':
         cmd = input('Введи команду: ')
         if cmd == 'attack':
@@ -61,9 +66,10 @@ def start_training(char_name, char_class):
     return 'Тренировка окончена.'
 
 
-def choice_char_class():
-    approve_choice = None
-    char_class = None
+def choice_char_class() -> str:
+    """Choose character"""
+    approve_choice: str = None
+    char_class: str = None
     while approve_choice != 'y':
         char_class = input('Введи название персонажа, за которого хочешь '
                            'играть: Воитель — warrior, Маг — mage, '
@@ -83,7 +89,8 @@ def choice_char_class():
     return char_class
 
 
-def main():
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name = input('...назови себя: ')
@@ -93,6 +100,4 @@ def main():
     print('Воитель, Маг, Лекарь')
     char_class = choice_char_class()
     print(start_training(char_name, char_class))
-
-
-main()
+X
